@@ -1,0 +1,2 @@
+Server Side : npx ts-node src/server.ts
+Client Side : ng serve -o
