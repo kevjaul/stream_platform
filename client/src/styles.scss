@@ -1,0 +1,12 @@
+@use '../node_modules/@angular/material' as mat;
+@include mat.core();
+
+html, body { height: 100%; }
+body { margin: 0; }
+
+$menu-font: mat.m2-define-typography-config(
+  $font-family: ("Source Sans Pro", sans-serif),
+);
+
+@include mat.all-component-themes($menu-font);
+@include mat.typography-hierarchy($menu-font);
