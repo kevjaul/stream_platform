@@ -20,53 +20,9 @@ export interface MenuItem {
   standalone: true,
   imports: [RouterOutlet, FilmsListComponent, MatToolbarModule, MatButtonModule, MatIconModule, MatGridListModule, MatFormFieldModule, MatInputModule,MatSidenavModule, FlexLayoutModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: [
-    `
-      main {
-        display: flex;
-        justify-content: center;
-        padding: 2rem 4rem;
-      }
-      .spacer {
-        display: flex;
-        flex: 1 1 auto;
-      }
-      .sidenav-menu{
-        position: fixed;
-        height: 100%;
-        width: 20%;
-        color: rgb(255,0,0);
-        background-color:transparent;
-      }
-      .navbar-menu-buttons{
-        width:inherit;
-        height:inherit;
-        background-color:transparent !important;
-        box-sizing: border-box;
-        color: white;
-        font-weight: bold;
-        border-radius:0;
-      }
-      .navbar-menu-buttons:hover{
-        color:red;
-        border-top: 2px solid red;
-        opacity: 1;
-      }
-      .navbar-menu-buttons-group{
-        width:40%;
-      }
-      .navbar-account-button{
-        background-color:rgb(255,0,0);
-        height:inherit;
-        border-radius:0;
-      }
-    `,
-  ],
+  styleUrls:["./styles/navbar.scss","./styles/sidenav.scss"],
   template: `
     <mat-toolbar style="padding-right:0">
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow fxHide.gt-sm>
-        <mat-icon class="white-icon">menu</mat-icon>
-      </button>
       <div style="display:flex;align-items: center;" fxHide.lt-md>
         <img src="./logos/website_full_logo.png" width="190em" height="45em" style="position:absolute">
         <a style="width:9.5em; height:2.5em; position:relative;" href="#"></a>
@@ -96,17 +52,25 @@ export interface MenuItem {
         <mat-icon style="margin:0; transform:scale(1.5);">account_circle</mat-icon>
       </button>
     </mat-toolbar>
-    <mat-sidenav-container fxFlexFill class="sidenav-menu">
-      <mat-sidenav #sidenav mode="over" position="start" fxLayout="column">
-        <div fxLayout="column">
-          @for (menuitem of menus; track menuitem) {
-            <a href="#" mat-button
-            >{{menuitem.text}}</a>
-          }
-        </div>
-      </mat-sidenav>
-    </mat-sidenav-container>
+
     <main>
+      <div class="sidenav-trigger" fxShow fxHide.gt-sm>
+        <div class="sidenav-trigger-shadow">
+        </div>
+        <div class="sidenav-bars">
+          <span class="sidenav-bar"></span>
+          <span class="sidenav-bar"></span>
+          <span class="sidenav-bar"></span>
+        </div>
+        <p> MENU </p>
+        <div class="sidenav">
+          <ul>
+            @for (menuitem of menus; track menuitem) {
+              <li><p>{{menuitem.text}}</p></li>
+            }
+          </ul>
+        </div>
+      </div>
       <router-outlet />
     </main>
   `,

@@ -16,7 +16,7 @@ body { margin: 0; }
 }
 
 @include mat.toolbar-overrides((
-    container-background-color: rgb(40, 40, 43),
+    container-background-color:#222,
     container-text-color: white,
   ));
 

@@ -1,0 +1,45 @@
+main {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 4rem;
+}
+
+.spacer {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.navbar-menu-buttons{
+    width:inherit;
+    height:inherit;
+    background-color:transparent !important;
+    box-sizing: border-box;
+    color: white;
+    font-weight: bold;
+    border-radius:0;
+    transition: all .4s ease;
+
+    &:hover{
+        color:red;
+        border-top: 2px solid red;
+        opacity: 1;
+    }
+    >.mdc-button__label{
+        transform: translateY(100px);
+        color:gray;
+    }
+    >span.mdc-button__label:hover{
+        transform: translateY(100px);
+        color:gray;
+    }
+}
+
+.navbar-menu-buttons-group{
+    width:40%;
+}
+
+.navbar-account-button{
+    background-color:rgb(255,0,0) !important;
+    height:inherit;
+    border-radius:0;
+}
