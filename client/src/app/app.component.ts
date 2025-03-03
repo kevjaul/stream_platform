@@ -38,38 +38,63 @@ export interface MenuItem {
         color: rgb(255,0,0);
         background-color:transparent;
       }
+      .navbar-menu-buttons{
+        width:inherit;
+        height:inherit;
+        background-color:transparent !important;
+        box-sizing: border-box;
+        color: white;
+        font-weight: bold;
+        border-radius:0;
+      }
+      .navbar-menu-buttons:hover{
+        color:red;
+        border-top: 2px solid red;
+        opacity: 1;
+      }
+      .navbar-menu-buttons-group{
+        width:40%;
+      }
+      .navbar-account-button{
+        background-color:rgb(255,0,0);
+        height:inherit;
+        border-radius:0;
+      }
     `,
   ],
   template: `
-    <mat-toolbar>
+    <mat-toolbar style="padding-right:0">
       <button mat-icon-button (click)="sidenav.toggle()" fxShow fxHide.gt-sm>
-        <mat-icon>menu</mat-icon>
+        <mat-icon class="white-icon">menu</mat-icon>
       </button>
-      <span>PlatFilm</span>
+      <div style="display:flex;align-items: center;" fxHide.lt-md>
+        <img src="./logos/website_full_logo.png" width="190em" height="45em" style="position:absolute">
+        <a style="width:9.5em; height:2.5em; position:relative;" href="#"></a>
+      </div>
+      <div style="display:flex;align-items: center;" fxShow fxHide.gt-sm>
+        <img src="./logos/website_logo.png" width="50em" height="45em" style="position:absolute">
+        <a style="width:2.5em; height:2.5em; position:relative;" href="#"></a>
+      </div>
       <span class="spacer"></span>
-      <mat-grid-list cols="4" rowHeight="100%" style="width:60%" fxShow fxHide.lt-md>
+      <mat-grid-list class="navbar-menu-buttons-group" cols="4" rowHeight="100%" fxShow fxHide.lt-md>
         @for (menuitem of menus; track menuitem) {
         <mat-grid-tile
         [colspan]="menuitem.cols"
         [rowspan]=1
-        >{{menuitem.text}}</mat-grid-tile>
+        ><button class="navbar-menu-buttons" mat-flat-button >{{menuitem.text}}</button></mat-grid-tile>
         }
       </mat-grid-list>
       <span class="spacer"></span>
-      <mat-form-field appearance="fill" subscriptSizing="dynamic">
+      <mat-form-field appearance="fill" subscriptSizing="dynamic" style="height:inherit">
         <mat-label>Search...</mat-label>
         <input matInput placeholder="Jurassic World,..." type="search">
         <button matSuffix mat-icon-button>
           <mat-icon>search</mat-icon>
         </button>
       </mat-form-field>
-      <section>
-        <div>
-          <button mat-fab>
-            <mat-icon>account_circle</mat-icon>
-          </button>
-        </div>
-      </section>
+      <button mat-flat-button class="navbar-account-button">
+        <mat-icon style="margin:0; transform:scale(1.5);">account_circle</mat-icon>
+      </button>
     </mat-toolbar>
     <mat-sidenav-container fxFlexFill class="sidenav-menu">
       <mat-sidenav #sidenav mode="over" position="start" fxLayout="column">
